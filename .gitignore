@@ -1,0 +1,6 @@
+sur.db
+sur.db-wal
+sur.db-shm
+.DS_Store
+node_modules/
+*.log

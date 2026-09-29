@@ -1,0 +1,14 @@
+{
+  "name": "sur",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Riyaz for your voice — find your natural range, get your Sa, and practise alankars tailored to it.",
+  "license": "MIT",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node server.mjs --open",
+    "dev": "node server.mjs",
+    "test": "node test/run.mjs"
+  }
+}

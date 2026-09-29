@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sur · riyaz for your voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap">
+<link rel="stylesheet" href="/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand">
+    <span class="nd">सुर</span>
+    <h1>Sur</h1>
+  </div>
+  <nav class="tabs" id="tabs" hidden>
+    <button data-screen="practice" aria-pressed="true">Practice</button>
+    <button data-screen="range">My voice</button>
+    <button data-screen="progress">Progress</button>
+  </nav>
+  <div class="who" id="who" hidden></div>
+</header>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════════════════════ welcome ═══ -->
+<section class="screen" id="s-welcome">
+  <div class="hero">
+    <div class="hero-dev">सा रे ग म प ध नि सा</div>
+    <h2>Find your Sa. Then practise from it.</h2>
+    <p class="lede">
+      Sur listens to your voice, works out the range you can sing comfortably,
+      and builds your riyaz around it — so every exercise sits where your voice
+      actually lives, not where a fixed app decided it should.
+    </p>
+    <div class="steps">
+      <div><i>1</i><span><b>A short range test.</b> You sing a few notes down and a few up. It takes about three minutes, and you never push.</span></div>
+      <div><i>2</i><span><b>Sur suggests your Sa.</b> The tonic your voice sits around, named the way your teacher would — kali 1, safed 3, and so on.</span></div>
+      <div><i>3</i><span><b>Practice, tailored.</b> Alankars that stay inside your range, with a tanpura on your Sa.</span></div>
+    </div>
+    <p class="fine">
+      Everything is saved on this computer, in a file next to the app.
+      <b>You only find your Sa once</b> — come back tomorrow and it is still here.
+      Nothing is uploaded anywhere.
+    </p>
+    <div class="cta">
+      <button class="btn primary big" id="beginBtn">Begin the range test</button>
+      <button class="btn ghost" id="skipToPractice" hidden>Skip — I know my Sa</button>
+    </div>
+    <div class="err" id="welcomeErr" hidden></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ warm up ═══ -->
+<section class="screen" id="s-warmup" hidden>
+  <div class="narrow">
+    <span class="eyebrow">Step 1 of 3</span>
+    <h2>Warm up first</h2>
+    <p class="lede">
+      A cold voice measures smaller than it really is, and pushing a cold voice
+      is how people hurt themselves. Hum gently up and down for a minute — no
+      effort, no loudness, just moving air.
+    </p>
+    <div class="warmring">
+      <svg viewBox="0 0 120 120" class="ring" aria-hidden="true">
+        <circle cx="60" cy="60" r="52" class="ring-bg"></circle>
+        <circle cx="60" cy="60" r="52" class="ring-fg" id="warmRing"></circle>
+      </svg>
+      <div class="warmtime mono" id="warmTime">1:00</div>
+    </div>
+    <div class="hum" id="humHint">Hum along with the drone. Slide gently up and down.</div>
+    <div class="cta">
+      <button class="btn primary" id="warmStart">Start warming up</button>
+      <button class="btn ghost" id="warmSkip">I am already warm</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ range test ═══ -->
+<section class="screen" id="s-test" hidden>
+  <div class="testgrid">
+    <div class="testmain">
+      <span class="eyebrow" id="testStep">Step 2 of 3 · going down</span>
+      <h2 id="testTitle">Sing this note</h2>
+      <p class="lede" id="testHint">Sing “aa” on the note you hear, and hold it steady for two seconds.</p>
+
+      <div class="target">
+        <div class="target-dev" id="targetDev">—</div>
+        <div class="target-note" id="targetNote">—</div>
+        <div class="target-sub mono" id="targetHz">—</div>
+        <button class="btn ghost small" id="playTarget">Play it again</button>
+      </div>
+
+      <div class="matchbar">
+        <div class="matchbar-track">
+          <div class="matchbar-zone"></div>
+          <div class="matchbar-you" id="matchYou"></div>
+        </div>
+        <div class="matchbar-labels mono"><span>flat</span><span id="matchCents">—</span><span>sharp</span></div>
+      </div>
+
+      <div class="holdring">
+        <svg viewBox="0 0 120 120" class="ring" aria-hidden="true">
+          <circle cx="60" cy="60" r="52" class="ring-bg"></circle>
+          <circle cx="60" cy="60" r="52" class="ring-fg" id="holdRing"></circle>
+        </svg>
+        <div class="holdlabel" id="holdLabel">hold it</div>
+      </div>
+
+      <div class="cta testcta">
+        <button class="btn primary" id="tooFar">That is as far as I go</button>
+        <button class="btn ghost" id="skipNote">Skip this note</button>
+      </div>
+      <p class="fine warnfine">
+        Never push or strain. The moment it feels like effort rather than singing,
+        press <em>That is as far as I go</em> — that is the honest answer and the
+        one that makes your practice fit.
+      </p>
+    </div>
+
+    <aside class="testside">
+      <div class="panel">
+        <div class="phead">Your range so far</div>
+        <canvas id="ladder" height="420"></canvas>
+      </div>
+      <div class="panel livebox">
+        <div class="phead">Live</div>
+        <div class="livegrid">
+          <div><span class="k">You are singing</span><span class="v mono" id="liveNote">—</span></div>
+          <div><span class="k">Steadiness</span><span class="v" id="liveSteady">—</span></div>
+          <div><span class="k">Tone</span><span class="v" id="liveTone">—</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ result ════ -->
+<section class="screen" id="s-result" hidden>
+  <div class="narrow">
+    <span class="eyebrow">Step 3 of 3</span>
+    <h2 id="resultTitle">This is your voice</h2>
+    <div class="rangecard">
+      <div class="rangecard-row">
+        <div><span class="k">Lowest</span><span class="v" id="rLow">—</span><span class="sub mono" id="rLowW">—</span></div>
+        <div><span class="k">Highest</span><span class="v" id="rHigh">—</span><span class="sub mono" id="rHighW">—</span></div>
+        <div><span class="k">That is</span><span class="v" id="rSpan">—</span></div>
+      </div>
+      <canvas id="rangeStrip" height="92"></canvas>
+    </div>
+    <div class="note-callout" id="rangeNote" hidden></div>
+
+    <h3>Your Sa</h3>
+    <p class="lede">
+      Sa is the note everything else is measured from. Sur places it so your
+      voice sits evenly around it — enough room below for the low work, enough
+      above for the high.
+    </p>
+    <div class="sachoices" id="saChoices"></div>
+
+    <div class="cta">
+      <button class="btn primary big" id="acceptSa">Save this and start practising</button>
+      <button class="btn ghost" id="retest">Test again</button>
+    </div>
+    <p class="fine">
+      You can change this any time under <b>My voice</b>. Your range naturally
+      shifts with sleep, health and warm-up — retest whenever you like and Sur
+      keeps the history.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════ practice ════ -->
+<section class="screen wide" id="s-practice" hidden>
+  <div class="pracbar">
+    <div class="pracsa">
+      <span class="k">Sa</span>
+      <span class="v mono" id="pSa">—</span>
+      <span class="key" id="pKey">—</span>
+    </div>
+    <label class="sel">Exercise <select id="exSelect"></select></label>
+    <label class="sel">Thaat <select id="thaatSelect"></select></label>
+    <button class="btn" id="droneBtn" aria-pressed="false"><span class="dot"></span> Tanpura</button>
+    <button class="btn primary" id="micBtn">Start singing</button>
+  </div>
+
+  <div class="warnbox" id="pracWarn" hidden></div>
+
+  <div class="pracgrid">
+    <div class="panel bignote" id="bignote">
+      <div class="bignote-dev" id="bigDev">—</div>
+      <div class="bignote-name" id="bigName">Silence</div>
+      <div class="bignote-oct" id="bigOct">sing something</div>
+      <div class="cents mono" id="bigCents">—</div>
+      <div class="needle-track"><div class="needle-zone"></div><div class="needle" id="needle"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="phead">Pitch <span class="sp mono" id="ribbonMeta"></span></div>
+      <canvas id="ribbon" height="300"></canvas>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="phead">
+      <span id="exTitle">Exercise</span>
+      <span class="sp" id="exMeta"></span>
+    </div>
+    <div class="seqwrap"><div class="seq" id="seq"></div></div>
+    <div class="exfoot" id="exFoot"></div>
+  </div>
+
+  <div class="panel">
+    <div class="phead">Coach <span class="sp" id="coachMeta"></span></div>
+    <div class="coach" id="coach"><div class="empty">Sing a swara and hold it. Notes you finish show up here.</div></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════ my voice ════ -->
+<section class="screen" id="s-range" hidden>
+  <div class="narrow">
+    <h2>My voice</h2>
+    <div class="panel pad" id="voiceSummary"></div>
+    <h3>Settings</h3>
+    <div class="panel pad fields">
+      <div class="field"><label for="setName">Name<span class="hint">So a household can share one copy.</span></label><input id="setName" type="text" maxlength="60"></div>
+      <div class="field"><label for="setSaHz">Sa frequency<span class="hint" id="setSaHint">—</span></label><input id="setSaHz" type="number" min="60" max="900" step="0.01"></div>
+      <div class="field"><label for="setA4">Concert A₄<span class="hint">440 is standard. Some tanpuras sit at 432.</span></label><input id="setA4" type="number" min="400" max="466" step="0.5"></div>
+      <div class="field"><label>Intonation<span class="hint">Just intonation matches a tanpura; equal matches a keyboard.</span></label>
+        <div class="seg"><button data-tuning="et">Equal</button><button data-tuning="ji">Just</button></div></div>
+      <div class="field"><label for="setTol">In-tune window<span class="hint" id="setTolHint">—</span></label><input id="setTol" type="range" min="10" max="50" step="5"></div>
+      <div class="field"><label>Theme</label>
+        <div class="seg"><button data-theme="auto">Auto</button><button data-theme="light">Light</button><button data-theme="dark">Dark</button></div></div>
+    </div>
+    <h3>Range history</h3>
+    <div class="panel pad" id="rangeHistory"></div>
+    <div class="cta"><button class="btn primary" id="retestBtn">Take the range test again</button></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════ progress ════ -->
+<section class="screen" id="s-progress" hidden>
+  <div class="narrow">
+    <h2>Progress</h2>
+    <div class="statrow" id="statRow"></div>
+    <h3>Your range over time</h3>
+    <div class="panel"><canvas id="trendChart" height="220"></canvas></div>
+    <h3>Which swaras need work</h3>
+    <div class="panel"><canvas id="swaraChart" height="240"></canvas></div>
+    <h3>Recent sessions</h3>
+    <div class="panel" id="sessionList"></div>
+  </div>
+</section>
+
+</main>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
